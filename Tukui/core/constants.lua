@@ -15,3 +15,4 @@ T.patch, T.build, T.releasedate, T.toc = GetBuildInfo()
 T.level = UnitLevel("player")
 T.myrealm = GetRealmName()
 T.InfoLeftRightWidth = 370
+T.pix = 1

@@ -1,11 +1,12 @@
 local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, variables; C - config; L - locales
 
 local TukuiBar1 = CreateFrame("Frame", "TukuiBar1", UIParent, "SecureHandlerStateTemplate")
-TukuiBar1:CreatePanel("Default", 1, 1, "BOTTOM", UIParent, "BOTTOM", 0, 14)
+TukuiBar1:CreatePanel("Default", 1, 1, "BOTTOM", UIParent, "BOTTOM", 0, 3)
 TukuiBar1:SetWidth((T.buttonsize * 12) + (T.buttonspacing * 13))
 TukuiBar1:SetHeight((T.buttonsize * 2) + (T.buttonspacing * 3))
 TukuiBar1:SetFrameStrata("BACKGROUND")
 TukuiBar1:SetFrameLevel(1)
+TukuiBar1:SetBackdrop(nil)
 
 local TukuiBar2 = CreateFrame("Frame", "TukuiBar2", UIParent)
 TukuiBar2:CreatePanel("Default", 1, 1, "BOTTOMRIGHT", TukuiBar1, "BOTTOMLEFT", -6, 0)
@@ -14,6 +15,7 @@ TukuiBar2:SetHeight((T.buttonsize * 2) + (T.buttonspacing * 3))
 TukuiBar2:SetFrameStrata("BACKGROUND")
 TukuiBar2:SetFrameLevel(2)
 TukuiBar2:SetAlpha(0)
+TukuiBar2:SetBackdrop(nil)
 if T.lowversion then
 	TukuiBar2:SetAlpha(0)
 else
@@ -26,6 +28,7 @@ TukuiBar3:SetWidth((T.buttonsize * 6) + (T.buttonspacing * 7))
 TukuiBar3:SetHeight((T.buttonsize * 2) + (T.buttonspacing * 3))
 TukuiBar3:SetFrameStrata("BACKGROUND")
 TukuiBar3:SetFrameLevel(2)
+TukuiBar3:SetBackdrop(nil)
 if T.lowversion then
 	TukuiBar3:SetAlpha(0)
 else
@@ -33,12 +36,13 @@ else
 end
 
 local TukuiBar4 = CreateFrame("Frame", "TukuiBar4", UIParent)
-TukuiBar4:CreatePanel("Default", 1, 1, "BOTTOM", UIParent, "BOTTOM", 0, 14)
+TukuiBar4:CreatePanel("Default", 1, 1, "BOTTOM", UIParent, "BOTTOM", 0, 3)
 TukuiBar4:SetWidth((T.buttonsize * 12) + (T.buttonspacing * 13))
 TukuiBar4:SetHeight((T.buttonsize * 2) + (T.buttonspacing * 3))
 TukuiBar4:SetFrameStrata("BACKGROUND")
 TukuiBar4:SetFrameLevel(2)
 TukuiBar4:SetAlpha(0)
+TukuiBar4:SetBackdrop(nil)
 
 local TukuiBar5 = CreateFrame("Frame", "TukuiBar5", UIParent)
 TukuiBar5:CreatePanel("Default", 1, (T.buttonsize * 12) + (T.buttonspacing * 13), "RIGHT", UIParent, "RIGHT", -23, -14)
@@ -46,6 +50,7 @@ TukuiBar5:SetWidth((T.buttonsize * 1) + (T.buttonspacing * 2))
 TukuiBar5:SetFrameStrata("BACKGROUND")
 TukuiBar5:SetFrameLevel(2)
 TukuiBar5:SetAlpha(0)
+TukuiBar5:SetBackdrop(nil)
 
 local TukuiBar6 = CreateFrame("Frame", "TukuiBar6", UIParent)
 TukuiBar6:SetWidth((T.buttonsize * 1) + (T.buttonspacing * 2))
@@ -54,6 +59,8 @@ TukuiBar6:SetPoint("LEFT", TukuiBar5, "LEFT", 0, 0)
 TukuiBar6:SetFrameStrata("BACKGROUND")
 TukuiBar6:SetFrameLevel(2)
 TukuiBar6:SetAlpha(0)
+TukuiBar6:SetBackdrop(nil)
+
 
 local TukuiBar7 = CreateFrame("Frame", "TukuiBar7", UIParent)
 TukuiBar7:SetWidth((T.buttonsize * 1) + (T.buttonspacing * 2))
@@ -62,6 +69,7 @@ TukuiBar7:SetPoint("TOP", TukuiBar5, "TOP", 0 , 0)
 TukuiBar7:SetFrameStrata("BACKGROUND")
 TukuiBar7:SetFrameLevel(2)
 TukuiBar7:SetAlpha(0)
+TukuiBar7:SetBackdrop(nil)
 
 local petbg = CreateFrame("Frame", "TukuiPetBar", UIParent, "SecureHandlerStateTemplate")
 petbg:CreatePanel("Default", T.petbuttonsize + (T.petbuttonspacing * 2), (T.petbuttonsize * 10) + (T.petbuttonspacing * 11), "RIGHT", TukuiBar5, "LEFT", -6, 0)
@@ -88,11 +96,11 @@ end
 
 -- LEFT VERTICAL LINE
 local ileftlv = CreateFrame("Frame", "TukuiInfoLeftLineVertical", TukuiBar1)
-ileftlv:CreatePanel("Default", 2, 130, "BOTTOMLEFT", UIParent, "BOTTOMLEFT", 22, 30)
+ileftlv:CreatePanel("Default", 2, 130, "BOTTOMLEFT", UIParent, "BOTTOMLEFT", -11, 0)
 
 -- RIGHT VERTICAL LINE
 local irightlv = CreateFrame("Frame", "TukuiInfoRightLineVertical", TukuiBar1)
-irightlv:CreatePanel("Default", 2, 130, "BOTTOMRIGHT", UIParent, "BOTTOMRIGHT", -22, 30)
+irightlv:CreatePanel("Default", 2, 130, "BOTTOMRIGHT", UIParent, "BOTTOMRIGHT", 11, 0)
 
 if not C.chat.background then
 	-- CUBE AT LEFT, ACT AS A BUTTON (CHAT MENU)
@@ -134,6 +142,8 @@ ltoabl:Point("BOTTOMLEFT", ileftlv, "BOTTOMLEFT", 0, 0)
 ltoabl:Point("RIGHT", TukuiBar1, "BOTTOMLEFT", -1, 17)
 ltoabl:SetFrameStrata("BACKGROUND")
 ltoabl:SetFrameLevel(1)
+ltoabl:SetBackdrop(nil)
+
 
 -- HORIZONTAL LINE RIGHT
 local ltoabr = CreateFrame("Frame", "TukuiLineToABRight", TukuiBar1)
@@ -143,6 +153,7 @@ ltoabr:Point("LEFT", TukuiBar1, "BOTTOMRIGHT", 1, 17)
 ltoabr:Point("BOTTOMRIGHT", irightlv, "BOTTOMRIGHT", 0, 0)
 ltoabr:SetFrameStrata("BACKGROUND")
 ltoabr:SetFrameLevel(1)
+ltoabr:SetBackdrop(nil)
 
 -- MOVE/HIDE SOME ELEMENTS IF CHAT BACKGROUND IS ENABLED
 local movechat = 0
@@ -150,15 +161,18 @@ if C.chat.background then movechat = 10 ileftlv:SetAlpha(0) irightlv:SetAlpha(0)
 
 -- INFO LEFT (FOR STATS)
 local ileft = CreateFrame("Frame", "TukuiInfoLeft", TukuiBar1)
-ileft:CreatePanel("Default", T.InfoLeftRightWidth, 23, "LEFT", ltoabl, "LEFT", 14 - movechat, 0)
+ileft:CreatePanel("Default", T.InfoLeftRightWidth, 23, "TOPLEFT", ileftlv, "BOTTOMLEFT", 14 - movechat, 22)
 ileft:SetFrameLevel(2)
 ileft:SetFrameStrata("BACKGROUND")
+ileft:SetBackdrop(nil)
 
 -- INFO RIGHT (FOR STATS)
 local iright = CreateFrame("Frame", "TukuiInfoRight", TukuiBar1)
-iright:CreatePanel("Default", T.InfoLeftRightWidth, 23, "RIGHT", ltoabr, "RIGHT", -14 + movechat, 0)
+iright:CreatePanel("Default", T.InfoLeftRightWidth, 23, "TOPRIGHT", irightlv, "BOTTOMRIGHT", -14 + movechat, 22)
 iright:SetFrameLevel(2)
 iright:SetFrameStrata("BACKGROUND")
+iright:SetBackdrop(nil)
+
 
 if C.chat.background then
 	-- Alpha horizontal lines because all panels is dependent on this frame.
@@ -203,10 +217,17 @@ end
 
 if TukuiMinimap then
 	local minimapstatsleft = CreateFrame("Frame", "TukuiMinimapStatsLeft", TukuiMinimap)
-	minimapstatsleft:CreatePanel("Default", ((TukuiMinimap:GetWidth() + 4) / 2) -3, 19, "TOPLEFT", TukuiMinimap, "BOTTOMLEFT", 0, -2)
-
+	minimapstatsleft:CreatePanel("Default", ((TukuiMinimap:GetWidth() + 4) / 2) -3, 19, "TOPLEFT", TukuiMinimap, "BOTTOMLEFT", 0, 21)
+    minimapstatsleft:SetBackdrop(nil)
+	minimapstatsleft:SetFrameLevel(2)
+	minimapstatsleft:SetFrameStrata("MEDIUM")
+	
 	local minimapstatsright = CreateFrame("Frame", "TukuiMinimapStatsRight", TukuiMinimap)
-	minimapstatsright:CreatePanel("Default", ((TukuiMinimap:GetWidth() + 4) / 2) -3, 19, "TOPRIGHT", TukuiMinimap, "BOTTOMRIGHT", 0, -2)
+	minimapstatsright:CreatePanel("Default", ((TukuiMinimap:GetWidth() + 4) / 2) -3, 19, "TOPRIGHT", TukuiMinimap, "BOTTOMRIGHT", 0, 21)
+	minimapstatsright:SetBackdrop(nil)
+	minimapstatsright:SetFrameLevel(2)
+	minimapstatsright:SetFrameStrata("MEDIUM")
+
 end
 
 --BATTLEGROUND STATS FRAME
@@ -218,3 +239,16 @@ if C["datatext"].battleground == true then
 	bgframe:SetFrameLevel(0)
 	bgframe:EnableMouse(true)
 end
+
+
+
+-- HORIZONTAL LINE RIGHT
+local BottomPanel = CreateFrame("Frame", "BottomPanel", UIParent)
+BottomPanel:CreatePanel("Default", 20, 20, "BOTTOMRIGHT", UIParent, "BOTTOMLEFT", 0, 5)
+BottomPanel:ClearAllPoints()
+BottomPanel:Point("LEFT", ileftlv, "BOTTOMRIGHT", 0, 0)
+BottomPanel:Point("BOTTOMRIGHT", irightlv, "BOTTOMRIGHT", 0, 0)
+
+
+
+

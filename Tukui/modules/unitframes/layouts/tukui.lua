@@ -74,11 +74,12 @@ local function Shared(self, unit)
 		if T.lowversion then
 			panel:CreatePanel("Default", 186, 21, "BOTTOM", self, "BOTTOM", 0, 0)
 		else
-			panel:CreatePanel("Default", 250, 21, "BOTTOM", self, "BOTTOM", 0, 0)
+			panel:CreatePanel("Default", 250, 21, "BOTTOM", self, "BOTTOM", 0, 12)
 		end
 		panel:SetFrameLevel(2)
 		panel:SetFrameStrata("MEDIUM")
 		panel:SetBackdropBorderColor(unpack(C["media"].altbordercolor))
+		panel:SetBackdrop(nil)
 		self.panel = panel
 	
 		-- health bar
@@ -92,14 +93,25 @@ local function Shared(self, unit)
 		health:SetPoint("TOPRIGHT")
 		health:SetStatusBarTexture(normTex)
 				
+		--[[Border for HealthBar
+		local HealthBorder = CreateFrame("Frame", nil, health)
+		HealthBorder:SetPoint("TOPLEFT", health, "TOPLEFT", -2, 2)
+		HealthBorder:SetPoint("BOTTOMRIGHT", health, "BOTTOMRIGHT", 2, -2)
+		HealthBorder:SetTemplate("Default")
+		HealthBorder:CreateShadow("Default")
+		HealthBorder:SetFrameLevel(2)
+		self.HealthBorder = HealthBorder]]--
+		
+		
 		-- health bar background
 		local healthBG = health:CreateTexture(nil, 'BORDER')
 		healthBG:SetAllPoints()
 		healthBG:SetTexture(.1, .1, .1)
 	
-		health.value = T.SetFontString(panel, font1, 12)
+		health.value = T.SetFontString(panel, font1, 12, "THINOUTLINE")
 		health.value:Point("RIGHT", panel, "RIGHT", -4, 0)
 		health.PostUpdate = T.PostUpdateHealth
+				
 				
 		self.Health = health
 		self.Health.bg = healthBG
@@ -134,7 +146,7 @@ local function Shared(self, unit)
 		powerBG:SetTexture(normTex)
 		powerBG.multiplier = 0.3
 		
-		power.value = T.SetFontString(panel, font1, 12)
+		power.value = T.SetFontString(panel, font1, 12, "THINOUTLINE")
 		power.value:Point("LEFT", panel, "LEFT", 4, 0)
 		power.PreUpdate = T.PreUpdatePower
 		power.PostUpdate = T.PostUpdatePower
@@ -244,12 +256,12 @@ local function Shared(self, unit)
 			FlashInfo:SetScript("OnUpdate", T.UpdateManaLevel)
 			FlashInfo.parent = self
 			FlashInfo:SetAllPoints(panel)
-			FlashInfo.ManaLevel = T.SetFontString(FlashInfo, font1, 12)
+			FlashInfo.ManaLevel = T.SetFontString(FlashInfo, font1, 12, "THINOUTLINE")
 			FlashInfo.ManaLevel:SetPoint("CENTER", panel, "CENTER", 0, 0)
 			self.FlashInfo = FlashInfo
 			
 			-- pvp status text
-			local status = T.SetFontString(panel, font1, 12)
+			local status = T.SetFontString(panel, font1, 12, "THINOUTLINE")
 			status:SetPoint("CENTER", panel, "CENTER", 0, 0)
 			status:SetTextColor(0.69, 0.31, 0.31)
 			status:Hide()
@@ -592,7 +604,7 @@ local function Shared(self, unit)
 			local Name = health:CreateFontString(nil, "OVERLAY")
 			Name:Point("LEFT", panel, "LEFT", 4, 0)
 			Name:SetJustifyH("LEFT")
-			Name:SetFont(font1, 12)
+			Name:SetFont(font1, 12, "THINOUTLINE")
 
 			self:Tag(Name, '[Tukui:getnamecolor][Tukui:namelong] [Tukui:diffcolor][level] [shortclassification]')
 			self.Name = Name
@@ -829,6 +841,7 @@ local function Shared(self, unit)
 			panel:SetFrameLevel(2)
 			panel:SetFrameStrata("MEDIUM")
 			panel:SetBackdropBorderColor(unpack(C["media"].altbordercolor))
+			panel:SetBackdrop(nil)
 			self.panel = panel
 		end
 		
@@ -1589,7 +1602,7 @@ player:SetPoint("BOTTOMLEFT", InvTukuiActionBarBackground, "TOPLEFT", 0,8+adjust
 if T.lowversion then
 	player:Size(186, 51)
 else
-	player:Size(250, 57)
+	player:Size(250, 35)
 end
 
 -- focus
@@ -1603,7 +1616,7 @@ target:SetPoint("BOTTOMRIGHT", InvTukuiActionBarBackground, "TOPRIGHT", 0,8+adju
 if T.lowversion then
 	target:Size(186, 51)
 else
-	target:Size(250, 57)
+	target:Size(250, 35)
 end
 
 -- tot
@@ -1613,7 +1626,7 @@ if T.lowversion then
 	tot:Size(186, 18)
 else
 	tot:SetPoint("BOTTOM", InvTukuiActionBarBackground, "TOP", 0,8)
-	tot:Size(129, 36)
+	tot:Size(129, 18)
 end
 
 -- pet

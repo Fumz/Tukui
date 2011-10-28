@@ -218,6 +218,7 @@ local function SetupChatPosAndFont(self)
 		if i == 1 then
 			chat:Point("BOTTOMLEFT", TukuiInfoLeft, "TOPLEFT", 0, 6)
 			chat:Point("BOTTOMRIGHT", TukuiInfoLeft, "TOPRIGHT", 0, 6)
+			chat:SetFont(C.media.font, fontSize, "THINOUTLINE") ----- FONT OUTLINE IN CHAT
 			FCF_SavePositionAndDimensions(chat)
 		elseif i == 4 and name == LOOT then
 			if not chat.isDocked then

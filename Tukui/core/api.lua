@@ -89,7 +89,7 @@ local function SetTemplate(f, t, tex)
 	  insets = { left = -mult, right = -mult, top = -mult, bottom = -mult}
 	})
 	
-	if t == "Transparent" then backdropa = 0.8 else backdropa = 1 end
+	if t == "Transparent" then backdropa = 0.8 else backdropa = .5 end
 	
 	f:SetBackdropColor(backdropr, backdropg, backdropb, backdropa)
 	f:SetBackdropBorderColor(borderr, borderg, borderb)
@@ -98,7 +98,7 @@ end
 local function CreatePanel(f, t, w, h, a1, p, a2, x, y)
 	GetTemplate(t)
 	
-	if t == "Transparent" then backdropa = 0.8 else backdropa = 1 end
+	if t == "Transparent" then backdropa = 0.8 else backdropa = .5 end
 	
 	local sh = Scale(h)
 	local sw = Scale(w)
@@ -107,12 +107,20 @@ local function CreatePanel(f, t, w, h, a1, p, a2, x, y)
 	f:SetWidth(sw)
 	f:SetFrameStrata("BACKGROUND")
 	f:SetPoint(a1, p, a2, Scale(x), Scale(y))
-	f:SetBackdrop({
-	  bgFile = C["media"].blank, 
-	  edgeFile = C["media"].blank, 
-	  tile = false, tileSize = 0, edgeSize = mult, 
-	  insets = { left = -mult, right = -mult, top = -mult, bottom = -mult}
-	})
+	if T.pix == 1 then
+		f:SetBackdrop({
+		  bgFile = texture, 
+		  edgeFile = C.media.blank, 
+		  edgeSize = 1, 
+		})
+	elseif T.pix == 2 then
+		f:SetBackdrop({
+		  bgFile = texture, 
+		  edgeFile = C.media.blank, 
+		  tile = false, tileSize = 0, edgeSize = mult, 
+		  insets = { left = -mult, right = -mult, top = -mult, bottom = -mult}
+		})
+	end
 	
 	f:SetBackdropColor(backdropr, backdropg, backdropb, backdropa)
 	f:SetBackdropBorderColor(borderr, borderg, borderb)

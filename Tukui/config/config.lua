@@ -45,7 +45,7 @@ C["unitframes"] = {
 	["aggro"] = true,                                   -- show aggro on all raids layouts
 	["raidunitdebuffwatch"] = true,                     -- track important spell to watch in pve for grid mode.
 	["gridhealthvertical"] = true,                      -- enable vertical grow on health bar for grid mode.
-	["showplayerinparty"] = false,                      -- show my player frame in party
+	["showplayerinparty"] = true,                      -- show my player frame in party
 	["gridscale"] = 1,                                  -- set the healing grid scaling
 	
 	-- boss frames
@@ -55,7 +55,7 @@ C["unitframes"] = {
 	["weakenedsoulbar"] = true,                         -- show weakened soul bar
 	
 	-- class bar
-	["classbar"] = true,                                -- enable tukui classbar over player unit
+	["classbar"] = false,                                -- enable tukui classbar over player unit
 }
 
 C["arena"] = {
@@ -92,14 +92,14 @@ C["cooldown"] = {
 }
 
 C["datatext"] = {
-	["fps_ms"] = 4,                                     -- show fps and ms on panels
-	["system"] = 5,                                     -- show total memory and others systems infos on panels
+	["fps_ms"] = 0,                                     -- show fps and ms on panels
+	["system"] = 0,                                     -- show total memory and others systems infos on panels
 	["bags"] = 0,                                       -- show space used in bags on panels
-	["gold"] = 6,                                       -- show your current gold on panels
+	["gold"] = 0,                                       -- show your current gold on panels
 	["wowtime"] = 8,                                    -- show time on panels
-	["guild"] = 1,                                      -- show number on guildmate connected on panels
-	["dur"] = 2,                                        -- show your equipment durability on panels.
-	["friends"] = 3,                                    -- show number of friends connected.
+	["guild"] = 0,                                      -- show number on guildmate connected on panels
+	["dur"] = 0,                                        -- show your equipment durability on panels.
+	["friends"] = 0,                                    -- show number of friends connected.
 	["dps_text"] = 0,                                   -- show a dps meter on panels
 	["hps_text"] = 0,                                   -- show a heal meter on panels
 	["power"] = 7,                                      -- show your attackpower/spellpower/healpower/rangedattackpower whatever stat is higher gets displayed
